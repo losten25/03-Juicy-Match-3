@@ -10,5 +10,6 @@ color = "Dog"
 texture = ExtResource( 2 )
 
 [node name="Select" parent="." index="2"]
+visible = false
 modulate = Color( 0.2, 0.447059, 0.917647, 1 )
 texture = ExtResource( 2 )

@@ -1,46 +1,43 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Grid/grid.gd" type="Script" id=1]
-[ext_resource path="res://Pieces/Piece Background.tscn" type="PackedScene" id=2]
-[ext_resource path="res://UI/HUD.gd" type="Script" id=3]
-[ext_resource path="res://Assets/FFF_NEPSZA-BADSAG-Bold.otf" type="DynamicFontData" id=4]
-[ext_resource path="res://UI/Camera.gd" type="Script" id=5]
-[ext_resource path="res://Assets/music.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Assets/music.ogg" type="AudioStream" id=1]
+[ext_resource path="res://UI/Instructions.gd" type="Script" id=2]
+[ext_resource path="res://UI/Camera.gd" type="Script" id=3]
+[ext_resource path="res://Grid/grid.gd" type="Script" id=4]
+[ext_resource path="res://Pieces/Piece Background.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/HUD.gd" type="Script" id=6]
 [ext_resource path="res://Assets/bird.wav" type="AudioStream" id=7]
-[ext_resource path="res://UI/Instructions.gd" type="Script" id=8]
-[ext_resource path="res://Assets/Dog.wav" type="AudioStream" id=9]
-[ext_resource path="res://Assets/Giraffe.wav" type="AudioStream" id=10]
-[ext_resource path="res://Assets/Chick.wav" type="AudioStream" id=11]
+[ext_resource path="res://Assets/FFF_NEPSZA-BADSAG-Bold.otf" type="DynamicFontData" id=8]
 
 [sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 4 )
+font_data = ExtResource( 8 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 32
-font_data = ExtResource( 4 )
+font_data = ExtResource( 8 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 24
-font_data = ExtResource( 4 )
+font_data = ExtResource( 8 )
 
 [node name="Game" type="Node2D"]
 
 [node name="grid" type="Node2D" parent="."]
-script = ExtResource( 1 )
+script = ExtResource( 4 )
 width = 7
 height = 10
 xStart = 80
 yStart = 832
 offset = 70
-background = ExtResource( 2 )
+background = ExtResource( 5 )
 
 [node name="Camera" type="Camera2D" parent="."]
 anchor_mode = 0
 current = true
-script = ExtResource( 5 )
+script = ExtResource( 3 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 6 )
+stream = ExtResource( 1 )
 autoplay = true
 
 [node name="Chick" type="AudioStreamPlayer" parent="."]
@@ -49,7 +46,7 @@ stream = ExtResource( 7 )
 [node name="HUD" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 3 )
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -85,7 +82,7 @@ pause_mode = 2
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 8 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -93,7 +90,7 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="HUD/Instructions"]
 margin_right = 526.0
 margin_bottom = 1024.0
-color = Color( 0, 0, 0, 0.615686 )
+color = Color( 0, 0, 0, 0.596078 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -102,10 +99,10 @@ __meta__ = {
 margin_right = 530.0
 margin_bottom = 1024.0
 custom_fonts/font = SubResource( 2 )
-text = "Level 1:
+text = "Level 2:
 
-How many points can you 
-score in 60 seconds?"
+How  long will it take you 
+to score 2000 points?"
 align = 1
 valign = 1
 autowrap = true
@@ -128,17 +125,6 @@ __meta__ = {
 
 [node name="Countdown" type="Timer" parent="HUD/Instructions"]
 autostart = true
-
-[node name="Sounds" type="Node" parent="."]
-
-[node name="Chick" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource( 11 )
-
-[node name="Dog" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource( 9 )
-
-[node name="Giraffe" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource( 10 )
 
 [connection signal="timeout" from="HUD/Timer" to="HUD" method="_on_Timer_timeout"]
 [connection signal="timeout" from="HUD/Instructions/Countdown" to="HUD/Instructions" method="_on_Countdown_timeout"]

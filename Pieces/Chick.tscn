@@ -4,3 +4,6 @@
 
 [node name="Chick" instance=ExtResource( 1 )]
 color = "Chick"
+
+[node name="Select" parent="." index="2"]
+visible = false

@@ -32,7 +32,11 @@ func _physics_process(_delta):
 func move_piece(change):
 	target_position = position + change
 	position = target_position
+	
 func die():
+	var sound = get_node_or_null("/root/Game/Sounds/Chick" + color)
+	if sound != null:
+		sound.playing = true
 	dying = true
 	var target_color = $Sprite.modulate
 	target_color.s = 1

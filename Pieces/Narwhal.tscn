@@ -10,5 +10,6 @@ color = "Narwhal"
 texture = ExtResource( 1 )
 
 [node name="Select" parent="." index="2"]
+visible = false
 modulate = Color( 0.160784, 0.701961, 0.792157, 1 )
 texture = ExtResource( 1 )
